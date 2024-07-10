@@ -1,9 +1,10 @@
-import css from './ErrorMessage.module.css'
+import React from 'react';
+import css from './ErrorMessage.module.css';
 
-const ErrorMessege = () => {
-    return(
-        <p className={css.errorMessage}>No images found</p>
-    )
+const ErrorMessage: React.FC = () => {
+  return (
+    <p className={css.errorMessage}>No images found</p>
+  );
 }
 
-export default ErrorMessege;
+export default ErrorMessage;

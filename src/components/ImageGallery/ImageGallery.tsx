@@ -5,6 +5,7 @@ import css from './ImageGallery.module.css';
 interface Image {
   id: string;
   urls: {
+    small: string;
     regular: string;
   };
   alt_description?: string;
@@ -13,6 +14,7 @@ interface Image {
 interface GalleryListProps {
   images: Image[]; 
   onImageClick: (image: Image) => void;
+  userSearched: boolean;
 }
 
 const GalleryList: React.FC<GalleryListProps> = ({ images, onImageClick }) => {

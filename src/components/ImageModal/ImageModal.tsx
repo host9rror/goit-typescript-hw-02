@@ -4,16 +4,18 @@ import css from './ImageModal.module.css'
 Modal.setAppElement("#root");
 
 interface Image {
+  id: string;
   urls: {
-    regular: string,
+    small: string;
+    regular: string
   };
-  alt_description: string;
+  alt_description?: string;
 }
 
 interface ImageModalProps {
   isOpen: boolean;
   onRequestClose: () => void;
-  image: Image | null; 
+  image: Image; 
 }
 
 const ImageModal: React.FC<ImageModalProps> = ({ isOpen, onRequestClose, image }) => {
