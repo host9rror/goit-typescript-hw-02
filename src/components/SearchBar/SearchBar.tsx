@@ -1,17 +1,20 @@
-import { useState } from 'react';
-import PropTypes from 'prop-types';
+import { ChangeEvent, FormEvent, useState } from 'react';
 import { Toaster, toast } from 'react-hot-toast'; 
 import { IoSearch } from "react-icons/io5";
 import css from './SearchBar.module.css';
 
-const SearchBar = ({onSubmit }) => {
-  const [searchString, setSearchString] = useState('');
+interface SearchBarProps {
+  onSubmit: (searchString: string) => void;
+}
 
-  const handleOnChange = event => {
+const SearchBar: React.FC<SearchBarProps> = ({ onSubmit }) => {
+  const [searchString, setSearchString] = useState<string>('');
+
+  const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchString(event.currentTarget.value);
   };
 
-  const handleSubmit = event => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (searchString.trim() === '') {
       toast.error('Please, write name for the image'); 
@@ -46,10 +49,6 @@ const SearchBar = ({onSubmit }) => {
       </header>
     </div>
   );
-};
-
-SearchBar.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
 };
 
 export default SearchBar;

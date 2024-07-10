@@ -1,8 +1,21 @@
-import PropTypes from 'prop-types';
+import React from 'react';
 import ImageCard from '../ImageCard/ImageCard';
 import css from './ImageGallery.module.css';
 
-const GalleryList = ({ images, onImageClick }) => {
+interface Image {
+  id: string;
+  urls: {
+    regular: string;
+  };
+  alt_description?: string;
+}
+
+interface GalleryListProps {
+  images: Image[]; 
+  onImageClick: (image: Image) => void;
+}
+
+const GalleryList: React.FC<GalleryListProps> = ({ images, onImageClick }) => {
 
     return (
       <div className={css.galleryListContainer}>
@@ -15,13 +28,6 @@ const GalleryList = ({ images, onImageClick }) => {
         </ul>
       </div>
     );
-};
-
-GalleryList.propTypes = {
-  images: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
-  })).isRequired,
-  onImageClick: PropTypes.func.isRequired,
 };
 
 export default GalleryList;
